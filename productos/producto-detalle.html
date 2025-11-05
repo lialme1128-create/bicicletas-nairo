@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle del Producto | Bicicletas Nairo</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <div id="header"></div>
+
+  <!-- Contenido principal -->
+  <main class="container my-5">
+    <div class="row align-items-start">
+      <!-- Carrusel de imágenes -->
+      <div class="col-md-6">
+        <div id="detalleCarousel" class="carousel slide shadow rounded" data-bs-ride="carousel">
+          <div class="carousel-inner" id="carouselImgs"></div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#detalleCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#detalleCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Información del producto -->
+      <div class="col-md-6">
+        <h2 id="nombreProducto" class="fw-bold text-primary mt-3 mt-md-0"></h2>
+        <p id="precioProducto" class="fs-4 fw-bold text-success mb-3"></p>
+
+        <button id="btnAgregarCarrito" class="btn btn-warning fw-bold text-dark px-4">
+          <i class="fa fa-cart-plus me-2"></i>Agregar al carrito
+        </button>
+
+        <div id="alertaCarrito" class="alert alert-success mt-4 d-none">
+          <strong>¡Producto agregado!</strong>
+          <div class="mt-2">
+            <button class="btn btn-sm btn-outline-primary me-2" id="seguirComprando">Seguir comprando</button>
+            <button class="btn btn-sm btn-primary" id="irAPagar">Ir a pagar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Descripción del producto -->
+    <section class="mt-5">
+      <h4 class="fw-bold text-secondary mb-3">Descripción del producto</h4>
+      <p id="descripcionProducto" class="lead"></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+
+  <script>
+    // ======== 1️⃣ Base de datos de los productos ========
+    const productos = {
+      p010: {
+        nombre: "Aquila Max Lite 9 Vel",
+        precio: "$1.267.000",
+        descripcion: "Bicicleta MTB ligera con cuadro de aluminio y transmisión de 9 velocidades. Ideal para senderos y ciudad. Convierte tu pasión en una aventura ¡Ha llegado el momento de desviarse al máximo entre amigos con espíritu competidor! Atrévete a rodar con la Aquila, juega con el terreno y vive en cada pedaleo una sola vez. Una nueva máquina, más aerodinámica, más potente, más divertida; Lánzate a conocer nuevos lugares.",
+        imagenes: [
+          "../img/bicicletas/MTB/aquila1.webp",
+          "../img/bicicletas/MTB/aquila2.webp",
+          "../img/bicicletas/MTB/aquila3.webp"
+        ]
+      },
+      p011: {
+        nombre: "Optimus Aquila Evo 13V",
+        precio: "$1.867.000",
+        descripcion: "Bicicleta Optimus con cuadro de aluminio, horquilla rígida y 13 velocidades para ciclistas exigentes.",
+        imagenes: [
+          "../img/bicicletas/MTB/evo1.webp",
+          "../img/bicicletas/MTB/evo2.webp",
+          "../img/bicicletas/MTB/evo3.webp"
+        ]
+      },
+      p012: {
+        nombre: "Bicicleta MTB 29 Zebra 1*9 Tacos",
+        precio: "$1.357.600",
+        descripcion: "¡Domina cualquier terreno con estilo y potencia! La  Zebra 1x9 es la compañera ideal para ciclistas que buscan rendimiento y versatilidad. Con su sistema de 9 velocidades, ajusta fácilmente tu ritmo para subir cuestas, conquistar caminos difíciles o desplazarte por la ciudad con agilidad. Su cuadro ligero y resistente te ofrece estabilidad, ya sea para tus trayectos diarios o tus aventuras al aire libre. La cebra este año llegó más veloz. ",
+        imagenes: [
+          "../img/bicicletas/MTB/zebra1.webp",
+          "../img/bicicletas/MTB/zebra2.webp",
+          "../img/bicicletas/MTB/zebra3.webp"
+        ]
+      },
+      p013: {
+        nombre: "Bicicleta FAT Alimunio 26P GW 8VEL",
+        precio: "$2.171.600",
+        descripcion: "Inicialmente pensada en los países con estaciones climáticas, tenemos la serie FAT, estás bicicletas crearon tendencia, desconociendo que su uso era exclusivo para el desierto ó la nieve, pero la diversión sobre ella también se encuentra en otro tipo de terrenos. Su desempeño en los terrenos de grama o húmedos, es excepcional logrando un avance más simple. La envergadura de sus llantas la hace llamativa y no te dejes engañar de su tamaño es más liviana de lo que imaginas.",
+        imagenes: [
+          "../img/bicicletas/MTB/fat1.webp",
+          "../img/bicicletas/MTB/fat2.webp",
+          "../img/bicicletas/MTB/fat3.webp"
+        ]
+      },
+      p014: {
+        nombre: "Bicicleta de montaña SLASH 7 XT 2023",
+        precio: "$10.983.000",
+        descripcion: "Cuadro de aluminio diseñado para los terrenos más exigentes con pedalier de rosca, doble protección del tubo diagonal, Knock Block 2.0 y amortiguador RockShox Deluxe Select+ con 160 mm de recorrido y horquilla Yari RC de 170 mm. Incorpora, además, una transmisión Shimano Deore XT, potentes frenos de 4 pistones Shimano para bajar con seguridad y ruedas Bontrager Line Comp 30, completamente preparadas para tubeless, con sellante incluido.",
+        imagenes: [
+          "../img/bicicletas/MTB/slash1.webp",
+          "../img/bicicletas/MTB/slash2.webp",
+          "../img/bicicletas/MTB/slash3.webp"
+        ]
+      },
+      p020: {
+        nombre: "FAT Aluminio 26P GW 8VEL",
+        precio: "$2.171.600",
+        descripcion: "Bicicleta FAT GW con neumáticos anchos, perfecta para terrenos de arena o nieve, 8 velocidades. Diseñada para ciclistas que buscan el máximo desempeño, la Sprinter es la combinación perfecta entre aerodinámica, control y eficiencia. Su avanzado marco de carbono XCP optimiza la transmisión de energía, permitiéndote aprovechar cada pedaleo con mayor potencia y menor fatiga.",
+        imagenes: [
+          "../img/bicicletas/MTB/fat1.webp",
+          "../img/bicicletas/MTB/fat2.webp",
+          "../img/bicicletas/MTB/fat3.webp"
+        ]
+      },
+      p021: {
+        nombre: "Bicicleta Flamma Ruta GW",
+        precio: "$3.164.600",
+        descripcion: "La Flamma ofrece un equilibrio entre ligereza y rigidez, ideal para ciclistas avanzados de ruta. La bicicleta de ruta Flamma es ligera, práctica y estéticamente atractiva, ideal para empezar a asumir nuevos retos, experimentar nuevos caminos en ruta y mejorar tu nivel de resistencia. Su marco es en aluminio ultra liviano y su tenedor en carbono, su geometría escaladora es lo que le da el toque para sentirte seguro y ganador.",
+        imagenes: [
+          "../img/bicicletas/Ruta/flama1.webp",
+          "../img/bicicletas/Ruta/flama2.webp",
+          "../img/bicicletas/Ruta/flama3.webp"
+        ]
+      },
+      p022: {
+        nombre: "Bicicleta de Ruta Cetus - Tiagra 10vel M24",
+        precio: "$5.624.850",
+        descripcion: "Ahora tus rutas serán diferentes con la nueva Optimus Cetus! Una bici diseñada para poner a prueba tu velocidad. Con Marco en aluminio y componentes SHIMANO TIAGRA de 10 velocidades. ¡Atrévete a conocerla!",
+        imagenes: [
+          "../img/bicicletas/Ruta/cetus1.webp",
+          "../img/bicicletas/Ruta/cetus2.webp",
+          "../img/bicicletas/Ruta/cetus3.webp"
+        ]
+      },
+      p023: {
+        nombre: "Bicicleta de Ruta Cetus - 9vel",
+        precio: "$2.520.000",
+        descripcion: "Diseñada para velocidad y rendimiento en carretera. Cuadro aerodinámico y frenos de disco hidráulicos. Ahora tus rutas serán diferentes con la nueva Optimus Cetus! Una bici diseñada para poner a prueba tu velocidad. Con Marco en aluminio y componentes Shimano de 9 velocidades. ¡Atrévete a conocerla!",
+        imagenes: [
+          "../img/bicicletas/Ruta/9v1.webp",
+          "../img/bicicletas/Ruta/9v2.webp",
+          "../img/bicicletas/Ruta/9v3.webp"
+        ]
+      },
+      p024: {
+        nombre: "Madone SL 7 GEN 8",
+        precio: "$24.291.000",
+        descripcion: "Bicicleta profesional de ruta con tecnología avanzada de carbono, ideal para competencias de alto nivel. La Madone SL 7 Gen 8 es una bicicleta de carretera preparada para la competición y diseñada para ofrecerte lo mejor de cada mundo. Es ligera como una pluma, lo cual te permite arrasar en las escaladas, mientras que la geometría aerodinámica reduce la resistencia en los descensos y el sistema IsoFlow te mantiene cómodo a lo largo de todo el recorrido. Para ofrecer la mejor combinación de precio y rendimiento, está fabricada con carbono OCLV Serie 500, un manillar y potencia de dos piezas y una transmisión electrónica inalámbrica Shimano Ultegra Di2, que permite cambiar de forma impecable, además de incorporar ruedas de carbono extremadamente ligeras.",
+        imagenes: [
+          "../img/bicicletas/Ruta/madone1.webp",
+          "../img/bicicletas/Ruta/madone2.webp",
+          "../img/bicicletas/Ruta/madone3.webp"
+        ]
+      },
+      p030: {
+        nombre: "Madone SL 7 GEN 8",
+        precio: "$24.291.000",
+        descripcion: "Bicicleta profesional de ruta con tecnología avanzada de carbono, ideal para competencias de alto nivel. La Madone SL 7 Gen 8 es una bicicleta de carretera preparada para la competición y diseñada para ofrecerte lo mejor de cada mundo. Es ligera como una pluma, lo cual te permite arrasar en las escaladas, mientras que la geometría aerodinámica reduce la resistencia en los descensos y el sistema IsoFlow te mantiene cómodo a lo largo de todo el recorrido. Para ofrecer la mejor combinación de precio y rendimiento, está fabricada con carbono OCLV Serie 500, un manillar y potencia de dos piezas y una transmisión electrónica inalámbrica Shimano Ultegra Di2, que permite cambiar de forma impecable, además de incorporar ruedas de carbono extremadamente ligeras.",
+        imagenes: [
+          "../img/bicicletas/Ruta/madone1.webp",
+          "../img/bicicletas/Ruta/madone2.webp",
+          "../img/bicicletas/Ruta/madone3.webp"
+        ]
+      },
+      p031: {
+        nombre: "Madone SL 7 GEN 8",
+        precio: "$24.291.000",
+        descripcion: "Bicicleta profesional de ruta con tecnología avanzada de carbono, ideal para competencias de alto nivel. La Madone SL 7 Gen 8 es una bicicleta de carretera preparada para la competición y diseñada para ofrecerte lo mejor de cada mundo. Es ligera como una pluma, lo cual te permite arrasar en las escaladas, mientras que la geometría aerodinámica reduce la resistencia en los descensos y el sistema IsoFlow te mantiene cómodo a lo largo de todo el recorrido. Para ofrecer la mejor combinación de precio y rendimiento, está fabricada con carbono OCLV Serie 500, un manillar y potencia de dos piezas y una transmisión electrónica inalámbrica Shimano Ultegra Di2, que permite cambiar de forma impecable, además de incorporar ruedas de carbono extremadamente ligeras.",
+        imagenes: [
+          "../img/bicicletas/Ruta/madone1.webp",
+          "../img/bicicletas/Ruta/madone2.webp",
+          "../img/bicicletas/Ruta/madone3.webp"
+        ]
+      },
+      p032: {
+        nombre: "Madone SL 7 GEN 8",
+        precio: "$24.291.000",
+        descripcion: "Bicicleta profesional de ruta con tecnología avanzada de carbono, ideal para competencias de alto nivel. La Madone SL 7 Gen 8 es una bicicleta de carretera preparada para la competición y diseñada para ofrecerte lo mejor de cada mundo. Es ligera como una pluma, lo cual te permite arrasar en las escaladas, mientras que la geometría aerodinámica reduce la resistencia en los descensos y el sistema IsoFlow te mantiene cómodo a lo largo de todo el recorrido. Para ofrecer la mejor combinación de precio y rendimiento, está fabricada con carbono OCLV Serie 500, un manillar y potencia de dos piezas y una transmisión electrónica inalámbrica Shimano Ultegra Di2, que permite cambiar de forma impecable, además de incorporar ruedas de carbono extremadamente ligeras.",
+        imagenes: [
+          "../img/bicicletas/Ruta/madone1.webp",
+          "../img/bicicletas/Ruta/madone2.webp",
+          "../img/bicicletas/Ruta/madone3.webp"
+        ]
+      },
+      p033: {
+        nombre: "Madone SL 7 GEN 8",
+        precio: "$24.291.000",
+        descripcion: "Bicicleta profesional de ruta con tecnología avanzada de carbono, ideal para competencias de alto nivel. La Madone SL 7 Gen 8 es una bicicleta de carretera preparada para la competición y diseñada para ofrecerte lo mejor de cada mundo. Es ligera como una pluma, lo cual te permite arrasar en las escaladas, mientras que la geometría aerodinámica reduce la resistencia en los descensos y el sistema IsoFlow te mantiene cómodo a lo largo de todo el recorrido. Para ofrecer la mejor combinación de precio y rendimiento, está fabricada con carbono OCLV Serie 500, un manillar y potencia de dos piezas y una transmisión electrónica inalámbrica Shimano Ultegra Di2, que permite cambiar de forma impecable, además de incorporar ruedas de carbono extremadamente ligeras.",
+        imagenes: [
+          "../img/bicicletas/Ruta/madone1.webp",
+          "../img/bicicletas/Ruta/madone2.webp",
+          "../img/bicicletas/Ruta/madone3.webp"
+        ]
+      },
+      p034: {
+        nombre: "Madone SL 7 GEN 8",
+        precio: "$24.291.000",
+        descripcion: "Bicicleta profesional de ruta con tecnología avanzada de carbono, ideal para competencias de alto nivel. La Madone SL 7 Gen 8 es una bicicleta de carretera preparada para la competición y diseñada para ofrecerte lo mejor de cada mundo. Es ligera como una pluma, lo cual te permite arrasar en las escaladas, mientras que la geometría aerodinámica reduce la resistencia en los descensos y el sistema IsoFlow te mantiene cómodo a lo largo de todo el recorrido. Para ofrecer la mejor combinación de precio y rendimiento, está fabricada con carbono OCLV Serie 500, un manillar y potencia de dos piezas y una transmisión electrónica inalámbrica Shimano Ultegra Di2, que permite cambiar de forma impecable, además de incorporar ruedas de carbono extremadamente ligeras.",
+        imagenes: [
+          "../img/bicicletas/Ruta/madone1.webp",
+          "../img/bicicletas/Ruta/madone2.webp",
+          "../img/bicicletas/Ruta/madone3.webp"
+        ]
+      },
+      p040: {
+        nombre: "Casco U1 Negro GW",
+        precio: "$164.600",
+        descripcion: "Casco liviano con diseño ergonómico, ventilación óptima y estructura reforzada para mayor seguridad. Los cascos para bicicleta y patinetas serie U son especiales para uso urbano.  Enfocados en dar una buena imagen sin perder la comodidad al igual que la protección. El estilo minimalista de los cascos  se ve reflejado en los tonos de color. Cuenta con sistemas de ventilación que nos brinda frescura sin perder el estilo y stop trasero para estar visibles en todo momento. Los casco U1 GW son ideales para brindarte seguridad al momento de salir a rodar. Puede convertirse en tu mejor aliado para evitar cualquier tipo de incidente que pueda presentarse en la vía.",
+        imagenes: [
+          "../img/accesorios/cascos/u1.webp",
+          "../img/accesorios/cascos/u2.webp",
+          "../img/accesorios/cascos/u3.webp"
+        ]
+      },
+      p041: {
+        nombre: "Casco 029 Ruta Naranja",
+        precio: "$139.900",
+        descripcion: "Casco aerodinámico ideal para ciclismo de ruta, con sistema de ajuste y ventilación avanzada. Casco GW 029 es diseñado con una estructura que brinda comodidad y seguridad. Ideal para asegurarte en la modalidad de Ruta o MTB, para ambas disciplinas brinda excelente protección y calidad. Los cascos GW 029 están listos para acompañarte en todo momento y protegerte de cualquier incidente que se pueda presentar en la vía. ",
+        imagenes: [
+          "../img/accesorios/cascos/029-1.webp",
+          "../img/accesorios/cascos/029-2.webp",
+          "../img/accesorios/cascos/029-3.webp"
+        ]
+      },
+      p042: {
+        nombre: "Casco Dragonfly Naranja",
+        precio: "$60.600",
+        descripcion: "Eleva tu experiencia de conducción a nuevas alturas con el Casco Dragonfly GW. No es solo un casco; es tu declaración de estilo y tu garantía de seguridad en cada giro. ¡Haz que cada viaje cuente con Dragonfly GW! es un equipo de protección diseñado específicamente para la cabeza de los niños mientras participan en actividades como andar en bicicleta o patinar. Estos cascos están diseñados para brindar protección en caso de caídas o colisiones, reduciendo el riesgo de lesiones en la cabeza. ",
+        imagenes: [
+          "../img/accesorios/cascos/dragon1.webp",
+          "../img/accesorios/cascos/dragon2.webp",
+          "../img/accesorios/cascos/dragon3.webp"
+        ]
+      },
+      p043: {
+        nombre: "Casco Wasp Azul Petróleo-Blanco",
+        precio: "$310.600",
+        descripcion: "El casco GW WASP está diseñado para brindar protección en las situaciones extremas de las pistas de BMX, Down Hill y enduro. Su carcasa resistente y duradera lo convierte en el aliado más importante cuando de competir se trata. El WASP tiene la capacidad y tecnología para absorber de forma eficaz cualquier impacto que pudiera presentarse, sin perder la comodidad y ventilación que necesitas para competir. ¡El límite es la meta! ",
+        imagenes: [
+          "../img/accesorios/cascos/wasp1.webp",
+          "../img/accesorios/cascos/wasp2.webp",
+          "../img/accesorios/cascos/wasp3.webp"
+        ]
+      },
+      p044: {
+        nombre: "Casco RC MTB/Verde Petrolero Mate",
+        precio: "$123.600",
+        descripcion: "Explora cada sendero y domina cada ruta con confianza absoluta. El casco RC está diseñado para acompañarte en tus aventuras, combinando lo último en tecnología y comodidad. Ya sea que desafíes terrenos de montaña o conquistas kilómetros en carretera, este casco es tu aliado perfecto, brindándote rendimiento y seguridad.",
+        imagenes: [
+          "../img/accesorios/cascos/rc1.webp",
+          "../img/accesorios/cascos/rc2.webp",
+          "../img/accesorios/cascos/rc3.webp"
+        ]
+      },
+      p050: {
+        nombre: "Guante GIRO JAG II",
+        precio: "$99.000",
+        descripcion: "Guantes de alto confort con cierre ajustable y acolchado en la palma. Excelente agarre. El acolchado de EVA suave complementa el excepcional diseño ergonómico Super Fit y la fabricación de alta calidad. Es una excelente opción para quienes buscan un guante ligeramente acolchado con un estilo moderno que ofrezca ajuste y comodidad.",
+        imagenes: [
+          "../img/accesorios/guantes/giro1.webp",
+          "../img/accesorios/guantes/giro2.webp",
+          "../img/accesorios/guantes/giro3.webp"
+        ]
+      },
+      p051: {
+        nombre: "Guantes SAVANT MTB",
+        precio: "$198.000",
+        descripcion: "El guante Savant MTB, que ofrece un contacto estrecho con la bicicleta además de una buena ventilación, garantiza la comodidad...",
+        imagenes: [
+          "../img/accesorios/guantes/savan1.webp",
+          "../img/accesorios/guantes/savan2.webp",
+          "../img/accesorios/guantes/savan3.webp"
+        ]
+      },
+      p052: {
+        nombre: "Guantes DEFT SHORT",
+        precio: "$198.000",
+        descripcion: "Guantes cortos con gel antideslizante, cómodos y resistentes. Ideal para MTB o ruta. Desarrollado para ofrecer un contacto estrecho con la bicicleta y lograr el máximo control y respuesta, y con un tejido...",
+        imagenes: [
+          "../img/accesorios/guantes/dft1.webp",
+          "../img/accesorios/guantes/dft2.webp",
+          "../img/accesorios/guantes/dft3.webp"
+        ]
+      },
+      p053: {
+        nombre: "Guantes Reflectivo STARS (Dedo largo)",
+        precio: "$62.000",
+        descripcion: "MATERIAL ALTAMENTE ELÁSTICO PARA MEJOR AJUSTE EN LA MUÑECA-MATERIAL REFLECTIVO CON UN DISEÑÓ ABSORBENTE DE LUZ-MANTIENE TUS MANOS FRESCAS MIENTRAS...",
+        imagenes: [
+          "../img/accesorios/guantes/star1.webp"
+        ]
+      },
+      p054: {
+        nombre: "Guantes XEN",
+        precio: "$145.000",
+        descripcion: "Ideales para ciclismo de Montaña. Cada guante de la línea Giro se caracteriza por una pieza triple en la palma...",
+        imagenes: [
+          "../img/accesorios/guantes/xen1.webp",
+          "../img/accesorios/guantes/xen2.webp",
+          "../img/accesorios/guantes/xen3.webp"
+        ]
+      },
+      p060: {
+        nombre: "LLANTA CONTINENTAL GRAND PRIX 5000 EDICION LIMITADA",
+        precio: "$310.000",
+        descripcion: "El mejor todoterreno del campo en un nivel de rendimiento completamente nuevo. Monta más rápido, más cómodo y aún más a prueba de pinchazos. Hechos para mejorar.",
+        imagenes: [
+          "../img/repuestos/llantas/grand1.webp"
+        ]
+      },
+      p061: {
+        nombre: "LLANTA CONTINENTAL ARGOTAL SOFT ENDURO",
+        precio: "$339.000",
+        descripcion: "Agarre para superar tus límites. Llanta ideal para terrenos sueltos, con estabilidad en curvas y mayor agarre lateral. El dibujo abierto...",
+        imagenes: [
+          "../img/repuestos/llantas/argotal1.webp",
+          "../img/repuestos/llantas/argotal2.webp",
+          "../img/repuestos/llantas/argotal3.webp"
+        ]
+      },
+      p062: {
+        nombre: "LLANTA CONTINENTAL CROSS KING PT KEVLAR",
+        precio: "$310.000",
+        descripcion: "El Cross King ProTection es una llanta de competición y turismo de primera calidad que combina un agarre seguro en las curvas con unas características de rodadura suaves, con una banda de rodadura versátil y suave que se adapta perfectamente a cualquier superficie.",
+        imagenes: [
+          "../img/repuestos/llantas/croos1.webp",
+          "../img/repuestos/llantas/croos2.webp"
+        ]
+      },
+      p063: {
+        nombre: "LLANTA CONTINENTAL TUBULAR COMPETITION",
+        precio: "$269.900",
+        descripcion: "Continental COMPETITION 700 × 22 Tubular: El Competition es un todoterreno que cumple con todos los requisitos para su uso en el ProTour o en competiciones. El neumático se adapta a todas las condiciones de la carretera y puntúa con agilidad y velocidad. Muestra un carácter consistentemente combativo. Asume un papel pionero con su mezcla de banda de rodadura de alto rendimiento desarrollada por Continental en combinación con protección contra pinchazos.",
+        imagenes: [
+          "../img/repuestos/llantas/tubular1.webp",
+          "../img/repuestos/llantas/tubular2.webp",
+          "../img/repuestos/llantas/tubular3.webp"
+        ]
+      },
+      p064: {
+        nombre: "LLANTA BONTRAGER RUTA R3 (KEVLAR)",
+        precio: "$189.000",
+        descripcion: "Tamaño 700C x 25 mm 700C x 28 mm Diámetro 700C 700C Ancho 25 mm 28 mm TPI 120 TPI...",
+        imagenes: [
+          "../img/repuestos/llantas/bon1.webp",
+          "../img/repuestos/llantas/bon2.webp",
+          "../img/repuestos/llantas/bon3.webp"
+        ]
+      },
+      p070: {
+        nombre: "Suspensión delantera D/B RL/O CTS 29 32m",
+        precio: "$583.600",
+        descripcion: "Suspensión delantera para bicicleta MTB GW modelo diseñado con las mejores características del mercado. En esta serie 2.2 podemos encontrar sistema de aire lo cual nos brinda una mejor lectura de terreno. Con las suspensiones GW 2.2 vas a tener una experiencia más cómoda disfrutando cada rodada.",
+        imagenes: [
+          "../img/repuestos/tenedores/db1.webp",
+          "../img/repuestos/tenedores/db2.webp",
+          "../img/repuestos/tenedores/db3.webp"
+        ]
+      },
+      p071: {
+        nombre: "Suspensión delantera BOOST D/B RL/O RA C",
+        precio: "$814.600",
+        descripcion: "Suspensión delantera para bicicleta MTB GW modelo diseñado con las mejores características del mercado. En esta serie 4.1 podemos encontrar sistema de aire lo cual nos brinda una mejor lectura de terreno. Con las suspensiones GW 4.1 vas a tener una experiencia más cómoda disfrutando cada rodada.",
+        imagenes: [
+          "../img/repuestos/tenedores/boost1.webp",
+          "../img/repuestos/tenedores/boost2.webp",
+          "../img/repuestos/tenedores/boost3.webp"
+        ]
+      },
+      p072: {
+        nombre: "Suspensión delantera D/B RL/O CTS 29-15m",
+        precio: "$491.600",
+        descripcion: "Suspensión delantera para bicicleta MTB GW modelo diseñado con las mejores características del mercado. En esta serie 3.1 podemos encontrar un sistema el cuál te brindará una mayor estabilidad y lectura de cada terreno. Sal a rodar cómodo y seguro con la Suspensión 3.1 de GW.",
+        imagenes: [
+          "../img/repuestos/tenedores/cts1.webp",
+          "../img/repuestos/tenedores/cts2.webp",
+          "../img/repuestos/tenedores/cts3.webp"
+        ]
+      },
+      p073: {
+        nombre: "Tenedor RockShox Recon",
+        precio: "$1.290.000",
+        descripcion: "Tenedor RockShox de alto rendimiento para ciclistas avanzados, amortiguación de aire y bloqueo remoto.",
+        imagenes: [
+          "../img/repuestos/tenedores/recon1.webp",
+          "../img/repuestos/tenedores/recon2.webp",
+          "../img/repuestos/tenedores/recon3.webp"
+        ]
+      },
+      p074: {
+        nombre: "Tenedor SR Suntour XCR",
+        precio: "$590.000",
+        descripcion: "Tenedor con suspensión ajustable para MTB, 120mm recorrido, compatible con frenos de disco.",
+        imagenes: [
+          "../img/repuestos/tenedores/xcr1.webp",
+          "../img/repuestos/tenedores/xcr2.webp",
+          "../img/repuestos/tenedores/xcr3.webp"
+        ]
+      },
+    };
+
+    // ======== 2️⃣ Cargar producto según el ID ========
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const producto = productos[id];
+
+    if (producto) {
+      document.getElementById("nombreProducto").textContent = producto.nombre;
+      document.getElementById("precioProducto").textContent = producto.precio;
+      document.getElementById("descripcionProducto").textContent = producto.descripcion;
+
+      const carousel = document.getElementById("carouselImgs");
+      carousel.innerHTML = producto.imagenes.map((img, i) => `
+        <div class="carousel-item ${i === 0 ? 'active' : ''}">
+          <img src="${img}" class="d-block w-100 rounded" alt="${producto.nombre}">
+        </div>
+      `).join('');
+    } else {
+      document.querySelector("main").innerHTML = `
+        <div class="text-center py-5">
+          <h3 class="text-danger">Producto no encontrado</h3>
+          <a href="../productos/productos.html" class="btn btn-outline-primary mt-3">Volver al catálogo</a>
+        </div>
+      `;
+    }
+
+    // ======== 3️⃣ Función del carrito ========
+    document.addEventListener("DOMContentLoaded", () => {
+      const btnAgregar = document.getElementById("btnAgregarCarrito");
+      const alerta = document.getElementById("alertaCarrito");
+      const seguir = document.getElementById("seguirComprando");
+      const pagar = document.getElementById("irAPagar");
+
+      btnAgregar?.addEventListener("click", () => {
+        alerta.classList.remove("d-none");
+      });
+
+      seguir?.addEventListener("click", () => {
+        window.location.href = "../productos/productos.html";
+      });
+
+      pagar?.addEventListener("click", () => {
+        window.location.href = "../productos/carrito.html";
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Todos los Productos | Bicicletas Nairo</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* --- Paginación personalizada --- */
+    .pagination-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      color: var(--azul-oscuro);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+    }
+    .pagination-container .page-btn {
+      background: transparent;
+      border: none;
+      color: var(--azul-oscuro);
+      font-weight: 600;
+      margin-left: 8px;
+      transition: color 0.3s, transform 0.2s;
+    }
+    .pagination-container .page-btn:hover {
+      color: #ffc107;
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+
+  <!-- ENCABEZADO -->
+  <section class="text-center text-white py-5" style="background-color: var(--azul-oscuro);">
+    <div class="container">
+      <h1 class="fw-bold text-warning mb-2">Todos los Productos</h1>
+      <p class="lead">Explora toda nuestra tienda: bicicletas, accesorios y repuestos.</p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN PRODUCTOS -->
+  <section class="container my-5" id="productos-section">
+    <div class="row">
+      <!-- FILTRO -->
+      <aside class="col-lg-3 mb-4">
+        <div id="filtro-container"></div>
+      </aside>
+
+      <!-- PRODUCTOS -->
+      <main class="col-lg-9">
+        <h2 class="text-center fw-bold text-primary mb-4">Catálogo</h2>
+        <hr>
+
+        <!-- Contenedor de tarjetas -->
+        <div class="row g-4" id="productosContainer">
+          <!-- === TARJETAS DE PRODUCTOS  === -->
+          <!-- ===== BICICLETAS (15) ===== -->
+          <!-- ===== Bicicletas MTB (5) ===== -->
+           <div class="col-12 col-sm-6 col-md-4 producto-item" data-categoria="bicicletas" data-marca="specialized" data-precio="4" data-genero="unisex">
+            <div class="card product-card position-relative">
+              <button class="btn btn-sm favorito position-absolute" data-id="p010" title="Agregar a favoritos"><i class="fa-regular fa-star"></i></button>
+              <div id="carousel-p010" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active"><a href="producto-detalle.html?id=p010"><img src="../img/bicicletas/MTB/aquila1.webp" class="d-block w-100" alt="Aquila Max Lite 9 Vel"></a></div>
+                  <div class="carousel-item"><a href="producto-detalle.html?id=p010"><img src="../img/bicicletas/MTB/aquila2.webp" class="d-block w-100" alt=""></a></div>
+                  <div class="carousel-item"><a href="producto-detalle.html?id=p010"><img src="../img/bicicletas/MTB/aquila3.webp" class="d-block w-100" alt=""></a></div>
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <h5 class="fw-bold">Aquila Max Lite 9 Vel</h5>
+                <p class="text-success fw-bold">$1.267.000</p>
+                <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-12 col-sm-6 col-md-4 producto-item" data-categoria="bicicletas" data-marca="optimus" data-precio="4" data-genero="unisex">
+            <div class="card product-card position-relative">
+              <button class="btn btn-sm favorito position-absolute" data-id="p011" title="Agregar a favoritos"><i class="fa-regular fa-star"></i></button>
+              <div id="carousel-p011" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active"><a href="productos/producto-detalle.html?id=p011"><img src="../img/bicicletas/MTB/evo1.webp" class="d-block w-100" alt="Optimus Aquila Evo 13 Vel"></a></div>
+                  <div class="carousel-item"><a href="productos/producto-detalle.html?id=p011"><img src="../img/bicicletas/MTB/evo2.webp" class="d-block w-100" alt=""></a></div>
+                  <div class="carousel-item"><a href="productos/producto-detalle.html?id=p011"><img src="../img/bicicletas/MTB/evo3.webp" class="d-block w-100" alt=""></a></div>
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <h5 class="fw-bold">Optimus Aquila Evo 13 Vel</h5>
+                <p class="text-success fw-bold">$1.867.000</p>
+                <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+              </div>
+            </div>
+          </div>
+
+           <div class="col-12 col-sm-6 col-md-4 producto-item" data-categoria="bicicletas" data-marca="GW" data-precio="4" data-genero="unisex">
+            <div class="card product-card position-relative">
+              <button class="btn btn-sm favorito position-absolute" data-id="p012" title="Agregar a favoritos"><i class="fa-regular fa-star"></i></button>
+              <div id="carousel-p012" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active"><a href="productos/producto-detalle.html?id=p012"><img src="../img/bicicletas/MTB/zebra1.webp" class="d-block w-100" alt="Bicicleta MTB 29 Zebra 1*9 Tacos"></a></div>
+                  <div class="carousel-item"><a href="productos/producto-detalle.html?id=p012"><img src="../img/bicicletas/MTB/zebra2.webp" class="d-block w-100" alt=""></a></div>
+                  <div class="carousel-item"><a href="../productos/producto-detalle.html?id=p012"><img src="../img/bicicletas/MTB/zebra3.webp" class="d-block w-100" alt=""></a></div>
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <h5 class="fw-bold">Bicicleta MTB 29 Zebra 1*9 Tacos</h5>
+                <p class="text-success fw-bold">$1.357.000</p>
+                <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+              </div>
+            </div>
+          </div>
+
+           <div class="col-12 col-sm-6 col-md-4 producto-item" data-categoria="bicicletas" data-marca="GW" data-precio="4" data-genero="unisex">
+            <div class="card product-card position-relative">
+              <button class="btn btn-sm favorito position-absolute" data-id="p013" title="Agregar a favoritos"><i class="fa-regular fa-star"></i></button>
+              <div id="carousel-p013" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active"><a href="../productos/producto-detalle.html?id=p013"><img src="../img/bicicletas/MTB/fat1.webp" class="d-block w-100" alt="Bicicleta FAT Aluminio 26P GW 8VEL"></a></div>
+                  <div class="carousel-item"><a href="../productos/producto-detalle.html?id=p013"><img src="../img/bicicletas/MTB/fat2.webp" class="d-block w-100" alt=""></a></div>
+                  <div class="carousel-item"><a href="../productos/producto-detalle.html?id=p013"><img src="../img/bicicletas/MTB/fat3.webp" class="d-block w-100" alt=""></a></div>
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <h5 class="fw-bold">Bicicleta FAT Aluminio 26P GW 8VEL</h5>
+                <p class="text-success fw-bold">$2.171.600</p>
+                <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+              </div>
+            </div>
+          </div>
+
+           <div class="col-12 col-sm-6 col-md-4 producto-item" data-categoria="bicicletas" data-marca="specialized" data-precio="4" data-genero="unisex">
+            <div class="card product-card position-relative">
+              <button class="btn btn-sm favorito position-absolute" data-id="p014" title="Agregar a favoritos"><i class="fa-regular fa-star"></i></button>
+              <div id="carousel-p014" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active"><a href="../productos/producto-detalle.html?id=p014"><img src="../img/bicicletas/MTB/slash1.webp" class="d-block w-100" alt="Bicicleta Montaña SLASH 7 XT 2023"></a></div>
+                  <div class="carousel-item"><a href="../productos/producto-detalle.html?id=p014"><img src="../img/bicicletas/MTB/slash2.webp" class="d-block w-100" alt=""></a></div>
+                  <div class="carousel-item"><a href="../productos/producto-detalle.html?id=p014"><img src="../img/bicicletas/MTB/slash3.webp" class="d-block w-100" alt=""></a></div>
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <h5 class="fw-bold">Bicicleta Montaña SLASH 7 XT 2023</h5>
+                <p class="text-success fw-bold">$10.983.000</p>
+                <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+              </div>
+            </div>
+          </div>
+
+
+          
+<div class="col-md-6 col-lg-4 producto-item" data-categoria="bicicletas" data-marca="gw" data-precio="4" data-genero="unisex">
+  <div class="card product-card position-relative">
+    <button class="btn btn-sm favorito position-absolute" title="Agregar a favoritos"><i class="fa-regular fa-star"></i></button>
+    <div id="carousel-p3" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active"><a href="../producto-detalle.html?id=p3"><img src="../img/bicicletas/Ruta/9v1.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p3"><img src="../img/bicicletas/Ruta/9v2.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p3"><img src="../img/bicicletas/Ruta/9v3.webp" class="d-block w-100"></a></div>
+      </div>
+    </div>
+    <div class="card-body text-center">
+      <h5 class="fw-bold">Bicicleta Cetus 9 Vel</h5>
+      <p class="text-success fw-bold">$2.520.000</p>
+      <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 producto-item" data-categoria="bicicletas" data-marca="gw" data-precio="4" data-genero="unisex">
+  <div class="card product-card position-relative">
+    <button class="btn btn-sm favorito position-absolute"><i class="fa-regular fa-star"></i></button>
+    <div id="carousel-p4" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active"><a href="../producto-detalle.html?id=p4"><img src="../img/bicicletas/Ruta/flama1.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p4"><img src="../img/bicicletas/Ruta/flama2.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p4"><img src="../img/bicicletas/Ruta/flama3.webp" class="d-block w-100"></a></div>
+      </div>
+    </div>
+    <div class="card-body text-center">
+      <h5 class="fw-bold">Bicicleta GW Flamma</h5>
+      <p class="text-success fw-bold">$3.164.600</p>
+      <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 producto-item" data-categoria="bicicletas" data-marca="trek" data-precio="4" data-genero="unisex">
+  <div class="card product-card position-relative">
+    <button class="btn btn-sm favorito position-absolute"><i class="fa-regular fa-star"></i></button>
+    <div id="carousel-p5" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active"><a href="../producto-detalle.html?id=p5"><img src="../img/bicicletas/Ruta/madone1.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p5"><img src="../img/bicicletas/Ruta/madone2.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p5"><img src="../img/bicicletas/Ruta/madone3.webp" class="d-block w-100"></a></div>
+      </div>
+    </div>
+    <div class="card-body text-center">
+      <h5 class="fw-bold">Trek Madone SL 7 Gen 8</h5>
+      <p class="text-success fw-bold">$24.291.000</p>
+      <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 producto-item" data-categoria="bicicletas" data-marca="gw" data-precio="4" data-genero="unisex">
+  <div class="card product-card position-relative">
+    <button class="btn btn-sm favorito position-absolute"><i class="fa-regular fa-star"></i></button>
+    <div id="carousel-p6" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active"><a href="../producto-detalle.html?id=p6"><img src="../img/bicicletas/MTB/fat1.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p6"><img src="../img/bicicletas/MTB/fat2.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p6"><img src="../img/bicicletas/MTB/fat3.webp" class="d-block w-100"></a></div>
+      </div>
+    </div>
+    <div class="card-body text-center">
+      <h5 class="fw-bold">Bicicleta FAT GW 8 Vel</h5>
+      <p class="text-success fw-bold">$2.171.600</p>
+      <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ACCESORIOS (4) ===== -->
+<div class="col-md-6 col-lg-4 producto-item" data-categoria="accesorios" data-marca="gw" data-precio="1" data-genero="unisex">
+  <div class="card product-card position-relative">
+    <button class="btn btn-sm favorito position-absolute"><i class="fa-regular fa-star"></i></button>
+    <div id="carousel-p7" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active"><a href="../producto-detalle.html?id=p7"><img src="../img/accesorios/cascos/u1.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p7"><img src="../img/accesorios/cascos/u2.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p7"><img src="../img/accesorios/cascos/u3.webp" class="d-block w-100"></a></div>
+      </div>
+    </div>
+    <div class="card-body text-center">
+      <h5 class="fw-bold">Casco U1 Negro</h5>
+      <p class="text-success fw-bold">$164.600</p>
+      <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 producto-item" data-categoria="accesorios" data-marca="gw" data-precio="1" data-genero="unisex">
+  <div class="card product-card position-relative">
+    <button class="btn btn-sm favorito position-absolute"><i class="fa-regular fa-star"></i></button>
+    <div id="carousel-p8" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active"><a href="../producto-detalle.html?id=p8"><img src="../img/accesorios/cascos/029-1.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p8"><img src="../img/accesorios/cascos/029-2.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p8"><img src="../img/accesorios/cascos/029-3.webp" class="d-block w-100"></a></div>
+      </div>
+    </div>
+    <div class="card-body text-center">
+      <h5 class="fw-bold">Casco 029 Ruta Naranja</h5>
+      <p class="text-success fw-bold">$139.900</p>
+      <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 producto-item" data-categoria="accesorios" data-marca="deft" data-precio="1" data-genero="unisex">
+  <div class="card product-card position-relative">
+    <button class="btn btn-sm favorito position-absolute"><i class="fa-regular fa-star"></i></button>
+    <div id="carousel-p9" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active"><a href="../producto-detalle.html?id=p9"><img src="../img/accesorios/guantes/dft1.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p9"><img src="../img/accesorios/guantes/dft2.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p9"><img src="../img/accesorios/guantes/dft3.webp" class="d-block w-100"></a></div>
+      </div>
+    </div>
+    <div class="card-body text-center">
+      <h5 class="fw-bold">Guantes Deft Short</h5>
+      <p class="text-success fw-bold">$198.000</p>
+      <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 producto-item" data-categoria="accesorios" data-marca="giro" data-precio="1" data-genero="unisex">
+  <div class="card product-card position-relative">
+    <button class="btn btn-sm favorito position-absolute"><i class="fa-regular fa-star"></i></button>
+    <div id="carousel-p10" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active"><a href="../producto-detalle.html?id=p10"><img src="../img/accesorios/guantes/giro1.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p10"><img src="../img/accesorios/guantes/giro2.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p10"><img src="../img/accesorios/guantes/giro3.webp" class="d-block w-100"></a></div>
+      </div>
+    </div>
+    <div class="card-body text-center">
+      <h5 class="fw-bold">Guante Giro Jag II</h5>
+      <p class="text-success fw-bold">$99.000</p>
+      <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== REPUESTOS (4) ===== -->
+<div class="col-md-6 col-lg-4 producto-item" data-categoria="repuestos" data-marca="shimano" data-precio="3" data-genero="unisex">
+  <div class="card product-card position-relative">
+    <button class="btn btn-sm favorito position-absolute"><i class="fa-regular fa-star"></i></button>
+    <div id="carousel-p11" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active"><a href="../producto-detalle.html?id=p11"><img src="../img/repuestos/llantas/1.jpeg" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p11"><img src="../img/repuestos/llantas/2.jpeg" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p11"><img src="../img/repuestos/llantas/3.jpeg" class="d-block w-100"></a></div>
+      </div>
+    </div>
+    <div class="card-body text-center">
+      <h5 class="fw-bold">Llantas Trail Grip</h5>
+      <p class="text-success fw-bold">$250.000</p>
+      <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 producto-item" data-categoria="repuestos" data-marca="rockshox" data-precio="4" data-genero="unisex">
+  <div class="card product-card position-relative">
+    <button class="btn btn-sm favorito position-absolute"><i class="fa-regular fa-star"></i></button>
+    <div id="carousel-p12" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active"><a href="../producto-detalle.html?id=p12"><img src="../img/repuestos/tenedores/1.jpeg" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p12"><img src="../img/repuestos/tenedores/2.jpeg" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p12"><img src="../img/repuestos/tenedores/3.jpeg" class="d-block w-100"></a></div>
+      </div>
+    </div>
+    <div class="card-body text-center">
+      <h5 class="fw-bold">Tenedor RockShock 29"</h5>
+      <p class="text-success fw-bold">$950.000</p>
+      <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 producto-item" data-categoria="repuestos" data-marca="shimano" data-precio="2" data-genero="unisex">
+  <div class="card product-card position-relative">
+    <button class="btn btn-sm favorito position-absolute"><i class="fa-regular fa-star"></i></button>
+    <div id="carousel-p13" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active"><a href="../producto-detalle.html?id=p13"><img src="../img/repuestos/cadenas/1.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p13"><img src="../img/repuestos/cadenas/2.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p13"><img src="../img/repuestos/cadenas/3.webp" class="d-block w-100"></a></div>
+      </div>
+    </div>
+    <div class="card-body text-center">
+      <h5 class="fw-bold">Cadena Shimano 11v</h5>
+      <p class="text-success fw-bold">$300.000</p>
+      <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 producto-item" data-categoria="repuestos" data-marca="sram" data-precio="3" data-genero="unisex">
+  <div class="card product-card position-relative">
+    <button class="btn btn-sm favorito position-absolute"><i class="fa-regular fa-star"></i></button>
+    <div id="carousel-p14" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active"><a href="../producto-detalle.html?id=p14"><img src="../img/repuestos/discos/1.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p14"><img src="../img/repuestos/discos/2.webp" class="d-block w-100"></a></div>
+        <div class="carousel-item"><a href="../producto-detalle.html?id=p14"><img src="../img/repuestos/discos/3.webp" class="d-block w-100"></a></div>
+      </div>
+    </div>
+    <div class="card-body text-center">
+      <h5 class="fw-bold">Disco Freno SRAM G2</h5>
+      <p class="text-success fw-bold">$480.000</p>
+      <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+    </div>
+  </div>
+</div>
+</main>
+    </div>
+  </section>
+
+  <!-- PROMOCIÓN -->
+  <section class="text-center text-white py-5" style="background-color: var(--azul-medio);">
+    <div class="container">
+      <h3 class="fw-bold text-warning">Financia tu próxima bicicleta con Nairo Créditos</h3>
+      <p class="mb-3">Hasta 12 cuotas sin intereses con tarjetas seleccionadas</p>
+    </div>
+  </section>
+
+  <!-- Modal de confirmación de carrito -->
+<div class="modal fade" id="modalCarritoConfirmacion" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg rounded-4">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title"><i class="fa fa-shopping-cart me-2"></i>Producto agregado</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center py-4">
+        <i class="fa fa-circle-check text-success fa-3x mb-3"></i>
+        <h5 id="modalCarritoProducto" class="fw-bold text-primary"></h5>
+        <p class="text-muted mb-0">¿Qué deseas hacer ahora?</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Seguir comprando</button>
+        <a href="carrito.html" class="btn btn-warning fw-bold text-dark">Ir al carrito</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div id="footer"></div>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+
+  <!-- Paginación funcional -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const productos = document.querySelectorAll("#productosContainer .producto-item");
+      const perPage = 6;
+      let currentPage = 1;
+      const total = productos.length;
+      const totalPages = Math.ceil(total / perPage);
+
+      const contadorTop = document.getElementById("contadorTop");
+      const contadorBottom = document.getElementById("contadorBottom");
+      const prevTop = document.getElementById("prevPageTop");
+      const nextTop = document.getElementById("nextPageTop");
+      const prevBottom = document.getElementById("prevPageBottom");
+      const nextBottom = document.getElementById("nextPageBottom");
+
+      function actualizarVista() {
+        const start = (currentPage - 1) * perPage;
+        const end = start + perPage;
+        productos.forEach((prod, index) => {
+          prod.style.display = (index >= start && index < end) ? "block" : "none";
+        });
+
+        const texto = `Mostrando ${start + 1}–${Math.min(end, total)} de ${total} productos`;
+        contadorTop.textContent = texto;
+        contadorBottom.textContent = texto;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function cambiarPagina(delta) {
+        currentPage += delta;
+        if (currentPage < 1) currentPage = 1;
+        if (currentPage > totalPages) currentPage = totalPages;
+        actualizarVista();
+      }
+
+      prevTop.addEventListener("click", () => cambiarPagina(-1));
+      nextTop.addEventListener("click", () => cambiarPagina(1));
+      prevBottom.addEventListener("click", () => cambiarPagina(-1));
+      nextBottom.addEventListener("click", () => cambiarPagina(1));
+
+      actualizarVista();
+    });
+  </script>
+</body>
+</html>

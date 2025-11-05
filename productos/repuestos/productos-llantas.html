@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Llantas | Bicicletas Nairo</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <div id="header"></div>
+
+  <!-- Banner -->
+  <section class="text-center text-white py-5" style="background-color: var(--azul-oscuro);">
+    <div class="container">
+      <h1 class="fw-bold text-warning">Llantas</h1>
+      <p class="lead">Experimenta ir donde quieras con nuestras super llantas</p>
+    </div>
+  </section>
+
+  <!-- Contenido principal -->
+  <section class="container my-5">
+    <div class="row">
+      <!-- Filtro -->
+      <aside class="col-lg-3 mb-4">
+        <div id="filtro-container"></div>
+      </aside>
+
+      <!-- Productos -->
+      <main class="col-lg-9">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2 class="text-primary fw-bold mb-0">Catálogo</h2>
+        </div>
+
+        <!-- Contador -->
+        <hr>
+        <div class="row g-4" id="productosContainer">
+          <!-- ===== Bicicletas MTB (5) ===== -->
+          <div class="col-12 col-sm-6 col-md-4 producto-item" data-categoria="bicicletas" data-marca="specialized" data-precio="4" data-genero="unisex">
+  <div class="card product-card position-relative">
+    <button class="btn btn-sm favorito position-absolute" data-id="p010" title="Agregar a favoritos"><i class="fa-regular fa-star"></i></button>
+    <div id="carousel-p010" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <a href="../producto-detalle.html?id=p010">
+            <img src="../../img/Repuestos/llantas/grand.webp" class="d-block w-100" alt="Aquila Max Lite 9 Vel">
+          </a>
+        </div>
+      </div> <!-- 🔹 cierre del .carousel-inner -->
+    </div> <!-- 🔹 cierre del #carousel-p010 -->
+    <div class="card-body text-center">
+      <h5 class="fw-bold">LLANTA CONTINENTAL GRAND PRIX 5000 EDICION LIMITADA</h5>
+      <p class="text-success fw-bold">$310.000</p>
+      <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+    </div>
+  </div>
+</div>
+
+          
+          <div class="col-12 col-sm-6 col-md-4 producto-item" data-categoria="bicicletas" data-marca="optimus" data-precio="4" data-genero="unisex">
+            <div class="card product-card position-relative">
+              <button class="btn btn-sm favorito position-absolute" data-id="p011" title="Agregar a favoritos"><i class="fa-regular fa-star"></i></button>
+              <div id="carousel-p011" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active"><a href="../productos/producto-detalle.html?id=p011"><img src="../../img/Repuestos/llantas/argotal1.webp" class="d-block w-100" alt="Optimus Aquila Evo 13 Vel"></a></div>
+                  <div class="carousel-item"><a href="../productos/producto-detalle.html?id=p011"><img src="../../img/Repuestos/llantas/argotal2.webp" class="d-block w-100" alt=""></a></div>
+                  <div class="carousel-item"><a href="../productos/producto-detalle.html?id=p011"><img src="../../img/Repuestos/llantas/argotal3.webp" class="d-block w-100" alt=""></a></div>
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <h5 class="fw-bold">LLANTA CONTINENTAL ARGOTAL SOFT ENDURO</h5>
+                <p class="text-success fw-bold">$339.000</p>
+                <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+              </div>
+            </div>
+          </div>
+
+           <div class="col-12 col-sm-6 col-md-4 producto-item" data-categoria="bicicletas" data-marca="GW" data-precio="4" data-genero="unisex">
+            <div class="card product-card position-relative">
+              <button class="btn btn-sm favorito position-absolute" data-id="p012" title="Agregar a favoritos"><i class="fa-regular fa-star"></i></button>
+              <div id="carousel-p012" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active"><a href="../productos/producto-detalle.html?id=p012"><img src="../../img/Repuestos/llantas/croos1.webp" class="d-block w-100" alt="Bicicleta MTB 29 Zebra 1*9 Tacos"></a></div>
+                  <div class="carousel-item"><a href="../productos/producto-detalle.html?id=p012"><img src="../../img/Repuestos/llantas/croos2.webp" class="d-block w-100" alt=""></a></div>
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <h5 class="fw-bold">LLANTA CONTINENTAL CROSS KING PT KEVLAR</h5>
+                <p class="text-success fw-bold">$295.000</p>
+                <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+              </div>
+            </div>
+          </div>
+
+           <div class="col-12 col-sm-6 col-md-4 producto-item" data-categoria="bicicletas" data-marca="GW" data-precio="4" data-genero="unisex">
+            <div class="card product-card position-relative">
+              <button class="btn btn-sm favorito position-absolute" data-id="p013" title="Agregar a favoritos"><i class="fa-regular fa-star"></i></button>
+              <div id="carousel-p013" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active"><a href="../productos/producto-detalle.html?id=p013"><img src="../../img/Repuestos/llantas/tubular1.webp" class="d-block w-100" alt="Bicicleta FAT Aluminio 26P GW 8VEL"></a></div>
+                  <div class="carousel-item"><a href="../productos/producto-detalle.html?id=p013"><img src="../../img/Repuestos/llantas/tubular2.webp" class="d-block w-100" alt=""></a></div>
+                  <div class="carousel-item"><a href="../productos/producto-detalle.html?id=p013"><img src="../../img/Repuestos/llantas/tubular3.webp" class="d-block w-100" alt=""></a></div>
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <h5 class="fw-bold">LLANTA CONTINENTAL TUBULAR COMPETITION</h5>
+                <p class="text-success fw-bold">$269.900</p>
+                <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+              </div>
+            </div>
+          </div>
+
+           <div class="col-12 col-sm-6 col-md-4 producto-item" data-categoria="bicicletas" data-marca="specialized" data-precio="4" data-genero="unisex">
+            <div class="card product-card position-relative">
+              <button class="btn btn-sm favorito position-absolute" data-id="p014" title="Agregar a favoritos"><i class="fa-regular fa-star"></i></button>
+              <div id="carousel-p014" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active"><a href="../productos/producto-detalle.html?id=p014"><img src="../../img/Repuestos/llantas/bon1.webp" class="d-block w-100" alt="Bicicleta Montaña SLASH 7 XT 2023"></a></div>
+                  <div class="carousel-item"><a href="../productos/producto-detalle.html?id=p014"><img src="../../img/Repuestos/llantas/bon2.webp" class="d-block w-100" alt=""></a></div>
+                  <div class="carousel-item"><a href="../productos/producto-detalle.html?id=p014"><img src="../../img/Repuestos/llantas/bon3.webp" class="d-block w-100" alt=""></a></div>
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <h5 class="fw-bold">LLANTA BONTRAGER RUTA R3 (KEVLAR)</h5>
+                <p class="text-success fw-bold">$189.000</p>
+                <button class="btn btn-warning btn-sm fw-bold agregar-carrito">Agregar</button>
+              </div>
+            </div>
+          </div> 
+      </main>
+    </div>
+  </section>
+
+
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

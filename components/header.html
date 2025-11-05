@@ -1,0 +1,83 @@
+<!-- ===================== BARRA PROMOCIONAL ===================== -->
+<div class="barra-promocional text-center text-white py-2" style="background-color: var(--azul-medio);">
+  🚴‍♂️ Envío gratis en compras mayores a $200.000 | Garantía de 1 año.
+</div>
+
+<!-- ===================== NAVBAR PRINCIPAL ===================== -->
+<nav class="navbar navbar-expand-lg navbar-dark py-3 shadow-sm" style="background-color: var(--azul-oscuro);">
+  <div class="container-fluid">
+
+    <!-- LOGO -->
+    <a class="navbar-brand d-flex align-items-center fw-bold" id="link-logo">
+      <img src="" id="logo-img" alt="Logo Bicicletas Nairo" width="50" class="me-2 rounded">
+      <span class="text-warning">Bicicletas Nairo</span>
+    </a>
+
+    <!-- Botón para móvil -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNairo"
+      aria-controls="navbarNairo" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- CONTENIDO DEL NAV -->
+    <div class="collapse navbar-collapse" id="navbarNairo">
+
+      <!-- MENÚ PRINCIPAL -->
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0" id="menu-links">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Inicio</a>
+        </li>
+
+        <!-- MENÚ PRODUCTOS -->
+        <li class="nav-item dropdown" id="productosMenu">
+          <a class="nav-link dropdown-toggle" href="#" id="productosDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Productos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="productosDropdown">
+            <li><h6 class="dropdown-header">Bicicletas</h6></li>
+            <li><a class="dropdown-item" href="productos/bicicletas/productos-ruta.html">Ruta</a></li>
+            <li><a class="dropdown-item" href="productos/bicicletas/productos-mtb.html">MTB</a></li>
+            <li><a class="dropdown-item" href="productos/bicicletas/productos-todoterreno.html">Todo Terreno</a></li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li><h6 class="dropdown-header">Accesorios</h6></li>
+            <li><a class="dropdown-item" href="productos/accesorios/productos-cascos.html">Cascos</a></li>
+            <li><a class="dropdown-item" href="productos/accesorios/productos-guantes.html">Guantes</a></li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li><h6 class="dropdown-header">Repuestos</h6></li>
+            <li><a class="dropdown-item" href="productos/repuestos/productos-llantas.html">Llantas</a></li>
+            <li><a class="dropdown-item" href="productos/repuestos/productos-tenedores.html">Tenedores</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="acerca.html">Acerca de</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="contacto.html">Contacto</a>
+        </li>
+      </ul>
+
+      <!-- BUSCADOR CENTRADO -->
+      <form class="d-flex mx-auto buscador-form" role="search">
+        <input class="form-control buscador" type="search" placeholder="Buscar productos..." aria-label="Buscar">
+        <button class="btn btn-buscar" type="submit"><i class="fa fa-search"></i></button>
+      </form>
+
+      <!-- ICONOS DERECHA -->
+      <div class="d-flex align-items-center ms-auto">
+        <a href="#" class="text-white me-3 fs-5"><i class="fa fa-heart"></i></a>
+        <a href="#" class="text-white me-3 fs-5"><i class="fa fa-user"></i></a>
+        <a href="../productos/carrito.html" class="text-white position-relative fs-5">
+          <i class="fa fa-shopping-cart"></i>
+          <span class="contador"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

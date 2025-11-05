@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carrito | Bicicletas Nairo</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <div id="header"></div>
+
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h1 class="text-center fw-bold text-primary mb-4">🛒 Tu Carrito</h1>
+
+      <div id="carrito-vacio" class="text-center my-5" style="display:none;">
+        <h4>Tu carrito está vacío 😢</h4>
+        <a href="productos.html" class="btn btn-warning mt-3">Explorar productos</a>
+      </div>
+
+      <div id="carrito-contenido">
+        <div class="table-responsive">
+          <table class="table align-middle text-center">
+            <thead class="table-primary">
+              <tr>
+                <th>Producto</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="carrito-tabla"></tbody>
+          </table>
+        </div>
+
+        <div class="text-end mt-4">
+          <h4>Total: <span id="carrito-total" class="text-success fw-bold">$0</span></h4>
+          <button id="vaciarCarrito" class="btn btn-outline-danger mt-3 me-2">Vaciar carrito</button>
+          <button id="finalizarCompra" class="btn btn-success mt-3">Finalizar compra</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+
+  <script>
+    // ================== FUNCIONES DEL CARRITO ===================
+    const carritoTabla = document.getElementById("carrito-tabla");
+    const carritoTotal = document.getElementById("carrito-total");
+    const carritoVacio = document.getElementById("carrito-vacio");
+    const carritoContenido = document.getElementById("carrito-contenido");
+
+    function obtenerCarrito() {
+      return JSON.parse(localStorage.getItem("carrito")) || [];
+    }
+
+    function guardarCarrito(carrito) {
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+    }
+
+    function renderizarCarrito() {
+      const carrito = obtenerCarrito();
+      carritoTabla.innerHTML = "";
+      if (carrito.length === 0) {
+        carritoVacio.style.display = "block";
+        carritoContenido.style.display = "none";
+        return;
+      }
+
+      carritoVacio.style.display = "none";
+      carritoContenido.style.display = "block";
+
+      let total = 0;
+
+      carrito.forEach((item, index) => {
+        const subtotal = item.precio * item.cantidad;
+        total += subtotal;
+
+        const fila = `
+          <tr>
+            <td><img src="${item.imagen}" alt="${item.nombre}" width="70" class="rounded"></td>
+            <td>${item.nombre}</td>
+            <td>$${item.precio.toLocaleString()}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary me-1" onclick="cambiarCantidad(${index}, -1)">−</button>
+              ${item.cantidad}
+              <button class="btn btn-sm btn-outline-primary ms-1" onclick="cambiarCantidad(${index}, 1)">+</button>
+            </td>
+            <td>$${subtotal.toLocaleString()}</td>
+            <td>
+              <button class="btn btn-sm btn-danger" onclick="eliminarProducto(${index})">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        `;
+        carritoTabla.insertAdjacentHTML("beforeend", fila);
+      });
+
+      carritoTotal.textContent = "$" + total.toLocaleString();
+    }
+
+    function cambiarCantidad(index, delta) {
+      const carrito = obtenerCarrito();
+      carrito[index].cantidad += delta;
+      if (carrito[index].cantidad <= 0) carrito.splice(index, 1);
+      guardarCarrito(carrito);
+      renderizarCarrito();
+    }
+
+    function eliminarProducto(index) {
+      const carrito = obtenerCarrito();
+      carrito.splice(index, 1);
+      guardarCarrito(carrito);
+      renderizarCarrito();
+    }
+
+    document.getElementById("vaciarCarrito").addEventListener("click", () => {
+      if (confirm("¿Vaciar todo el carrito?")) {
+        localStorage.removeItem("carrito");
+        renderizarCarrito();
+      }
+    });
+
+    document.getElementById("finalizarCompra").addEventListener("click", () => {
+      alert("Gracias por tu compra 🚴‍♂️✨");
+      localStorage.removeItem("carrito");
+      renderizarCarrito();
+    });
+
+    renderizarCarrito();
+  </script>
+</body>
+</html>

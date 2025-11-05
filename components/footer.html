@@ -1,0 +1,78 @@
+<!-- ===================== FOOTER ===================== -->
+<footer class="text-white pt-5" style="background-color: var(--azul-oscuro); font-family: 'Poppins', sans-serif;">
+  <div class="container">
+    <div class="row gy-4 align-items-start">
+
+      <!-- COLUMNA 1: LOGO Y DESCRIPCIÓN -->
+      <div class="col-md-4 text-center text-md-start">
+        <div class="d-flex align-items-center justify-content-center justify-content-md-start mb-3">
+          <img src="../img/logonairo.jpg" alt="Logo Bicicletas Nairo" width="55" class="rounded shadow-sm me-2">
+          <h5 class="fw-bold text-warning mb-0">Bicicletas Nairo</h5>
+        </div>
+        <p class="small opacity-75 mb-3">
+          Tu tienda especializada en ciclismo.  
+          Bicicletas, accesorios y repuestos de alta calidad.  
+          ¡Vive la experiencia sobre dos ruedas!
+        </p>
+        <div>
+          <a href="https://www.facebook.com/share/15KeA9uU5zW/" class="text-white fs-5 me-3 social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/bicicletas_nairo?igsh=cmZqdjduYTA2eHNz" class="text-white fs-5 me-3 social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-white fs-5 social-link"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <!-- COLUMNA 2: ENLACES RÁPIDOS -->
+      <div class="col-md-4 text-center">
+        <h6 class="fw-bold text-warning mb-3 text-uppercase">Enlaces Rápidos</h6>
+        <ul class="list-unstyled small">
+          <li><a href="index.html" class="footer-link d-block mb-2">Inicio</a></li>
+          <li><a href="productos/productos.html" class="footer-link d-block mb-2">Productos</a></li>
+          <li><a href="acerca.html" class="footer-link d-block mb-2">Acerca de</a></li>
+          <li><a href="contacto.html" class="footer-link d-block">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- COLUMNA 3: CONTACTO -->
+      <div class="col-md-4 text-center text-md-end">
+        <h6 class="fw-bold text-warning mb-3 text-uppercase">Contáctanos</h6>
+        <p class="mb-1 small"><i class="fa fa-map-marker-alt me-2 text-warning"></i>Calle 18A2 #36-6, Valledupar</p>
+        <p class="mb-1 small"><i class="fa fa-phone me-2 text-warning"></i>+57 302 257 8919</p>
+        <p class="mb-3 small"><i class="fa fa-envelope me-2 text-warning"></i>bicicletasnairo@hotmail.com</p>
+      </div>
+    </div>
+
+    <!-- SEPARADOR -->
+    <hr class="border-light my-4 opacity-25" />
+
+    <!-- COPYRIGHT -->
+    <div class="text-center pb-3">
+      <p class="mb-0 small opacity-75">
+        &copy; <span id="year"></span> <strong>Bicicletas Nairo</strong>. Todos los derechos reservados.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- Script para el año dinámico -->
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<!-- ===================== ESTILOS ESPECÍFICOS ===================== -->
+<style>
+  .footer-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .footer-link:hover {
+    color: var(--amarillo);
+  }
+  .social-link {
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  .social-link:hover {
+    transform: scale(1.2);
+    color: var(--amarillo);
+  }
+</style>

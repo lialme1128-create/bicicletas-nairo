@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ruta | Bicicletas Nairo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div id="header"></div>
+
+  <section class="text-center text-white py-5" style="background-color: var(--azul-oscuro);">
+    <div class="container">
+      <h1 class="fw-bold text-warning mb-2">Bicicletas Ruta</h1>
+    </div>
+  </section>
+
+  <section class="container my-5" id="productos-section">
+    <div class="row">
+      <aside class="col-lg-3 mb-4">
+        <div id="filtro-container"></div>
+      </aside>
+      <main class="col-lg-9">
+        <h2 class="text-center fw-bold text-primary mb-4">Ruta</h2>
+        <div class="row g-4">
+          <!-- Aquí pones 5 tarjetas (igual estructura que en productos pero las data-categoria="bicicletas") -->
+          <!-- Ejemplo de una tarjeta: -->
+          <div class="col-md-6 col-lg-4 producto-item" data-categoria="bicicletas" data-marca="giant" data-precio="4" data-genero="unisex" data-id="r001">
+            <!-- Card con carrusel & botones (igual que en productos.html) -->
+             <!-- Producto 1 -->
+          <div class="col-md-6 col-lg-4 producto-item" data-categoria="bicicletas" data-marca="specialized" data-precio="4" data-genero="unisex" data-id="p001">
+            <div class="card product-card position-relative">
+              <!-- favorito -->
+              <button class="btn btn-sm favorito position-absolute" title="Agregar a favoritos" data-id="p001">
+                <i class="fa-regular fa-star"></i>
+              </button>
+
+              <!-- carrusel interno -->
+              <div id="carousel-p001" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <a href="../producto-detalle.html?id=p001"><img src="../img/bicicletas/ruta/sprinter1.webp" class="d-block w-100" alt=""></a>
+                  </div>
+                  <div class="carousel-item">
+                    <a href="../producto-detalle.html?id=p001"><img src="../img/bicicletas/ruta/sprinter2.webp" class="d-block w-100" alt=""></a>
+                  </div>
+                  <div class="carousel-item">
+                    <a href="../producto-detalle.html?id=p001"><img src="../img/bicicletas/ruta/sprinter3.webp" class="d-block w-100" alt=""></a>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-p001" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel-p001" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+              </div>
+
+              <div class="card-body text-center">
+                <h5 class="card-title">Bicicleta Sprinter Ruta</h5>
+                <p class="text-success fw-bold">$12.885.000</p>
+                <div class="d-flex gap-2 justify-content-center">
+                  <button class="btn btn-outline-secondary btn-sm agregar-favorito" data-id="p001"><i class="fa-regular fa-star"></i></button>
+                  <button class="btn btn-warning btn-sm agregar-carrito" data-id="p001">Agregar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+/* css/styles.css - limpio y optimizado */
+
+/* ========== Variables ========== */
+:root{
+  --azul-oscuro:#0B1E4A;
+  --azul-medio:#1F4E79;
+  --celeste:#4DB6E8;
+  --amarillo:#FEC63D;
+  --naranja:#F58A1F;
+  --gris-claro:#f8f9fa;
+  --blanco:#ffffff;
+}
+
+/* ========== Global ========== */
+*{box-sizing:border-box}
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--gris-claro);
+  color:#222;
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,h5{font-weight:600}
+
+.text-primary{color:var(--azul-medio) !important}
+
+/* ========== Promo bar ========== */
+.barra-promocional{
+  background:var(--azul-medio);
+  color:var(--blanco);
+  padding:.45rem;
+  text-align:center;
+  font-size:.95rem;
+}
+
+/* ========== Navbar ========== */
+.navbar{background:var(--azul-oscuro) !important;font-weight:500}
+.navbar-brand span{color:var(--amarillo);font-size:1.25rem}
+.navbar-nav .nav-link{color:var(--blanco) !important;margin:0 .4rem}
+.navbar-nav .nav-link:hover,.navbar-nav .nav-link.active{color:var(--amarillo) !important}
+
+/* ensure dropdown over filters */
+.dropdown-menu{z-index:3000;background:var(--azul-medio);border:none;border-radius:8px;padding:.5rem 0;transition:.18s}
+.dropdown-item{color:var(--blanco)}
+.dropdown-item:hover{background:var(--celeste);color:var(--azul-oscuro)}
+.dropdown-header{color:var(--amarillo);font-weight:600}
+
+/* ========== Buscador ========== */
+.buscador-form{width:35%;position:relative}
+.buscador{border-radius:50px 0 0 50px;border:none;padding:7px 12px}
+.btn-buscar{background:var(--amarillo);border-radius:0 50px 50px 0;border:none;color:var(--azul-oscuro);padding:7px 12px}
+.btn-buscar:hover{background:var(--naranja);color:var(--blanco)}
+
+/* ========== Iconos y contador ========== */
+.navbar .fa{transition:.2s}
+.navbar .fa:hover{color:var(--amarillo)}
+.contador{position:absolute;top:-6px;right:-10px;background:#e63946;color:#fff;font-size:.7rem;padding:2px 6px;border-radius:50%;font-weight:700}
+
+/* ========== Carrusel principal ========== */
+#hero{position:relative;overflow:hidden}
+.carousel-item img{width:100%;height:70vh;object-fit:cover;filter:brightness(.8);transition:transform 5s}
+.carousel-item.active img{transform:scale(1.03)}
+.carousel-caption{bottom:20%;text-shadow:0 3px 8px rgba(0,0,0,.6)}
+.carousel-indicators [data-bs-target]{background:#fff;width:12px;height:12px;border-radius:50%}
+
+/* ========== Layout Productos ========== */
+#productos-section{display:flex;gap:2rem;align-items:flex-start}
+#productos-section .row{display:flex;flex-wrap:wrap;gap:2rem}
+#productos-section aside{flex:0 0 300px}
+#productos-section main{flex:1;min-width:0}
+
+/* filtro card */
+.filtros-card{border-radius:12px;background:#fff}
+.filtros-card .card-body{padding:1.35rem}
+.form-select{border-radius:10px;border:1px solid #ddd;padding:.45rem}
+
+/* tarjetas de producto */
+.product-card{border-radius:12px;overflow:hidden;border:1px solid #e6e6e6;background:#fff;position:relative}
+.product-card .carousel-inner, .product-card img{width:100%;height:220px;max-height: 220px; object-fit:cover}
+.product-card .card-body{padding:1rem}
+.product-card .favorito{position:absolute;top:8px;right:8px;z-index:200;background:rgba(255,255,255,.95);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:none}
+.product-card .favorito i{color:#777;transition:.2s}
+.product-card .favorito i.fa-solid{color:var(--amarillo)}
+.product-card .carousel {overflow: hidden;}
+
+/* ajustes grid: usar clases bootstrap col-*, pero forzamos 3 por fila en desktop */
+#productosContainer{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:flex-start}
+#productosContainer > .col-lg-4{flex:0 0 32%;max-width:32%}
+@media (max-width:1200px){#productosContainer > .col-lg-4{flex:0 0 48%;max-width:48%}}
+@media (max-width:768px){#productosContainer > .col-lg-4{flex:0 0 100%;max-width:100%}}
+
+/* contador paginacion */
+#contadorPaginacion{min-width:200px;text-align:center;color:#004080;font-size:.95rem}
+
+/* Contadores y paginador alineados a la derecha */
+#productosPager {
+  margin-top: 12px;
+}
+
+/* Asegurar que no existan reglas que reduzcan visualmente width de img */
+.card-img-top {
+  width: 100%;
+  height: auto;
+}
+
+/* Favorito (estrella) en esquina */
+.product-card .favorito {
+  top: 8px;
+  right: 8px;
+  z-index: 5;
+  background: rgba(255,255,255,0.95);
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Acerca/Contacto (contener) */
+main.container{max-width:1100px;margin:0 auto}
+form{background:#fff;border-radius:10px}
+form .form-control{border-radius:8px}
+
+/* Footer */
+footer{background:var(--azul-oscuro);color:var(--blanco);padding:36px 0}
+footer a{color:var(--blanco);text-decoration:none}
+footer a:hover{color:var(--celeste)}
+
+/* Responsive adjustments */
+@media (max-width:992px){
+  .buscador-form{width:100%;margin-top:.6rem}
+  #productos-section{display:block}
+  #productos-section aside, #productos-section main{width:100%}
+  .product-card img{height:180px}
+  #productosContainer > .col-lg-4{max-width:100%;flex:0 0 100%}
+}
+
+/* forzar dropdown arriba del filtro */
+.dropdown-menu{z-index:3000 !important}
+
+/* Carrito */
+#carrito-total {
+  font-size: 1.4rem;
+}
+
+.table img {
+  object-fit: cover;
+}
+
+/* Modal carrito */
+.modal-content {
+  border-radius: 1rem;
+}
+.modal-header {
+  border-bottom: none;
+}
+.modal-footer {
+  border-top: none;
+}
